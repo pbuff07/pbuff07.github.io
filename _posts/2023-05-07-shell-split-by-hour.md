@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "shell按小时切割文件"
-tags: 网络与硬件
+tags: linux
 ---
 
 ## 背景
