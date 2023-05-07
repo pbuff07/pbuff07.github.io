@@ -1,17 +1,5 @@
-tag1:
-  name: tag1
-
-tag2:
-  name: tag2
-
-tag3:
-  name: tag3
-
-tag4:
-  name: tag4
-
-tag5:
-  name: tag5
+network_and_hardware:
+  name: 网络与硬件
 
 linux:
   name: linux
