@@ -7,7 +7,7 @@ order: 4
 ## 个人介绍
 - **职业**: 网络安全研究工程师  
 - **方向**: 蓝队  
-- **Twitter**: [我的Twitter地址](https://twitter.com/Aarn63373424)  
+- **Twitter**: [Aarn63373424](https://twitter.com/Aarn63373424)  
 - **GitHub**: [github.com/pbuff07](https://github.com/pbuff07)  
 
 ## 专业技能
