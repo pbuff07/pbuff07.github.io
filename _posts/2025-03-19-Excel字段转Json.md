@@ -2,7 +2,7 @@
 title: Excel字段转Json
 date: 2025-03-19 14:00:00 +/-TTTT
 categories: [杂文]
-tags: ['Excel', 'json', 'awk']     # TAG names should always be lowercase
+tags: ['数据分析', 'json', 'awk']     # TAG names should always be lowercase
 ---
 
 
