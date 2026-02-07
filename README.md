@@ -1,43 +1,40 @@
-# Chirpy Starter
+# pbuff07.github.io
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+pbuff07的个人博客，使用 [Hugo](https://gohugo.io) + [hugo-texify3](https://github.com/michaelneuper/hugo-texify3) 主题搭建。
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+## 本地运行
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
+```bash
+# 安装 Hugo
+brew install hugo
 
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
+# 克隆仓库（含子模块）
+git clone --recurse-submodules https://github.com/pbuff07/pbuff07.github.io.git
 
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+# 启动服务器
+cd pbuff07.github.io
+hugo server -D
 ```
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+访问 http://localhost:1313
 
-## Usage
+## 新增文章
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+在 `content/posts/` 目录下创建 `YYYY-MM-DD-标题.md` 文件：
 
-## Contributing
+```yaml
+---
+title: "文章标题"
+date: 2025-02-08T14:00:00+08:00
+categories: ["分类"]
+tags: ["标签"]
+toc: false
+numberedSubtitles: false
+---
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+文章内容...
+```
 
-## License
+## 部署
 
-This work is published under [MIT][mit] License.
-
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+推送到 main 分支后，GitHub Actions 自动构建部署到 GitHub Pages。
