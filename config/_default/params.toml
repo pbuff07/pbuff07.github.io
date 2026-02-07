@@ -50,6 +50,9 @@ icon = "fas fa-envelope"
 name = "Email"
 url = "mailto:pbuff@qq.com"
 
+# Buy Me a Coffee 禁用
+[params.buymeacoffee]
+
 # 分享按钮
 [params.sharingbuttons]
 facebook = false
