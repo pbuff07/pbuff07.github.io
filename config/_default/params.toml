@@ -52,6 +52,7 @@ url = "mailto:pbuff@qq.com"
 
 # Buy Me a Coffee 禁用
 [params.buymeacoffee]
+code = ""
 
 # 分享按钮
 [params.sharingbuttons]
