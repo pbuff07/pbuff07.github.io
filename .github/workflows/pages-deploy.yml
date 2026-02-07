@@ -42,8 +42,8 @@ jobs:
         run: |
           wget -q https://github.com/sass/dart-sass/releases/download/1.97.3/dart-sass-1.97.3-linux-x64.tar.gz
           tar -xf dart-sass-1.97.3-linux-x64.tar.gz
-          sudo mv dart-sass /usr/local/bin/
-          dart-sass --version
+          chmod +x dart-sass/sass
+          echo "$GITHUB_WORKSPACE/dart-sass" >> $GITHUB_PATH
 
       - name: Setup Pages
         id: pages
