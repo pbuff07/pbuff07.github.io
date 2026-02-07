@@ -38,12 +38,21 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Setup Dart Sass
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dart Sass
         run: |
           wget -q https://github.com/sass/dart-sass/releases/download/1.97.3/dart-sass-1.97.3-linux-x64.tar.gz
           tar -xf dart-sass-1.97.3-linux-x64.tar.gz
           chmod +x dart-sass/sass
           echo "$GITHUB_WORKSPACE/dart-sass" >> $GITHUB_PATH
+
+      - name: Install PostCSS
+        run: |
+          npm install -g postcss postcss-cli autoprefixer
 
       - name: Setup Pages
         id: pages
