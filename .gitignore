@@ -15,6 +15,11 @@ _site
 node_modules
 package-lock.json
 
+# Hugo
+.hugo_build.lock
+resources/
+public/
+
 # IDE configurations
 .idea
 .vscode/*
@@ -28,4 +33,3 @@ assets/js/dist
 
 # Self
 .DS_Store
-

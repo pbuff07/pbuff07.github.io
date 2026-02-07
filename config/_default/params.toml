@@ -1,0 +1,62 @@
+title = "pbuff07"
+author = "pbuff07"
+description = "Zoomye, CyberSecurity, Blog, pbuff07"
+footnote = "赛博空间嘴强王者"
+keywords = ["pbuff07", "blog", "cybersecurity", "网络安全"]
+dateFormat = "2006-01-02"
+emphasisWithDots = true
+toc = true
+showWordCount = true
+showReadingTime = true
+math = true
+numberedSubtitles = false
+since = "2023"
+avatar = "/3.jpg"
+
+# 评论系统配置 (Giscus)
+[params.commentEngine]
+code = """
+<script src="https://giscus.app/client.js"
+    data-repo="pbuff07/pbuff07.github.io"
+    data-repo-id=""
+    data-category="General"
+    data-category-id=""
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="gruvbox"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+"""
+
+# 联系方式 (从 _data/contact.yml 迁移)
+[[params.social]]
+icon = "fab fa-github"
+name = "GitHub"
+url = "https://github.com/pbuff07"
+
+[[params.social]]
+icon = "fa-brands fa-x-twitter"
+name = "Twitter"
+url = "https://twitter.com/Aarn63373424"
+
+[[params.social]]
+icon = "fas fa-envelope"
+name = "Email"
+url = "mailto:pbuff@qq.com"
+
+# 分享按钮
+[params.sharingbuttons]
+facebook = false
+twitter = true
+email = true
+linkedin = false
+reddit = false
+whatsapp = false
+hackernews = false
+telegram = false
