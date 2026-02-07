@@ -42,6 +42,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Install Dart Sass
         run: |
@@ -49,10 +53,6 @@ jobs:
           tar -xf dart-sass-1.97.3-linux-x64.tar.gz
           chmod +x dart-sass/sass
           echo "$GITHUB_WORKSPACE/dart-sass" >> $GITHUB_PATH
-
-      - name: Install PostCSS
-        run: |
-          npm install -g postcss postcss-cli autoprefixer
 
       - name: Setup Pages
         id: pages
