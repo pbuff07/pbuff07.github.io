@@ -74,6 +74,15 @@
 </head>
 
 <body>
+  <script>
+    // 默认暗色模式
+    if (localStorage.getItem("darkMode") === null) {
+      localStorage.setItem("darkMode", "enabled");
+    }
+    if (localStorage.getItem("darkMode") === "enabled") {
+      document.body.classList.add("darkmode");
+    }
+  </script>
   <div id="wrapper">
     {{ partial "header.html" . }}
     {{ block "main" . }}{{ end }}
