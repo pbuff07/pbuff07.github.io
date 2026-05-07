@@ -7,7 +7,7 @@
       {{- $first = false -}}
       {
         "title": {{ $p.Title | jsonify }},
-        "permalink": {{ $p.Permalink | jsonify }},
+        "permalink": {{ $p.RelPermalink | jsonify }},
         "summary": {{ $p.Summary | plainify | jsonify }},
         "content": {{ $p.Plain | jsonify }},
         "date": {{ $p.Date.Format "2006-01-02" | jsonify }}
