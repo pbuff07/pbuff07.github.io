@@ -1,12 +1,9 @@
 ---
 title: "UTF-16LE编码解析 AI-Generate"
 date: 2025-02-08T14:00:00+08:00
-categories: ["AI-Generate", "编码"]
 tags: ["编码", "utf16", "AI-Generate"]
-toc: false
-numberedSubtitles: false
+categories: ["技术杂谈与科普"]
 ---
-
 ## UTF-16编码概述
 
 UTF-16（Unicode Transformation Format - 16-bit）是Unicode字符集的一种编码方式，使用16位（2字节）或32位（4字节）来表示一个Unicode字符。

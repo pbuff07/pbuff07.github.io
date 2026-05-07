@@ -1,12 +1,9 @@
 ---
 title: "Learn-Claude-Code(Tools)"
 date: 2026-03-27T17:46:00+08:00
-categories: ["编程"]
 tags: ["ai", "agent", "python", "anthropic"]
-toc: true
-numberedSubtitles: false
+categories: ["AI 工程"]
 ---
-
 接上一篇 Agent 循环的实现，s01 搞清楚了 Agent 循环的本质就是一个 `while True` 不断问 LLM、执行工具、再问 LLM。但那时候只有一个 bash 工具，啥都走 shell，多少有点暴力。
 
 s02 解决了一个很实际的问题：**工具怎么扩展？**
@@ -19,7 +16,7 @@ s02 解决了一个很实际的问题：**工具怎么扩展？**
 
 s01 的时候，循环里直接写死了 `run_bash(block.input["command"])`。现在改成这样：
 
-```
+```text
 TOOL_HANDLERS = {
     "bash":       lambda **kw: run_bash(kw["command"]),
     "read_file":  lambda **kw: run_read(kw["path"], kw.get("limit")),
@@ -31,7 +28,7 @@ TOOL_HANDLERS = {
 
 循环体里就变成了一行查找：
 
-```
+```text
 handler = TOOL_HANDLERS.get(block.name)
 output = handler(**block.input) if handler \
     else f"Unknown tool: {block.name}"
@@ -51,7 +48,7 @@ output = handler(**block.input) if handler \
 
 ## 路径沙箱
 
-```
+```python
 def safe_path(p: str) -> Path:
     path = (WORKDIR / p).resolve()
     if not path.is_relative_to(WORKDIR):
@@ -69,7 +66,7 @@ def safe_path(p: str) -> Path:
 
 读文件，支持 limit 参数截断行数，输出也有 50000 字符上限：
 
-```
+```sql
 def run_read(path: str, limit: int = None) -> str:
     try:
         text = safe_path(path).read_text()
@@ -85,7 +82,7 @@ def run_read(path: str, limit: int = None) -> str:
 
 创建或覆写文件，自动创建父目录：
 
-```
+```python
 def run_write(path: str, content: str) -> str:
     try:
         fp = safe_path(path)
@@ -100,7 +97,7 @@ def run_write(path: str, content: str) -> str:
 
 精确替换，只替换第一个匹配：
 
-```
+```python
 def run_edit(path: str, old_text: str, new_text: str) -> str:
     try:
         fp = safe_path(path)
@@ -121,7 +118,7 @@ def run_edit(path: str, old_text: str, new_text: str) -> str:
 
 每个工具需要告诉 LLM 怎么用，这就是 schema。比如 bash 的定义：
 
-```
+```json
 {
     "name": "bash",
     "description": "Run a shell command.",
@@ -150,7 +147,7 @@ description 写得好不好，直接影响 LLM 用得对不对。s02 的描述�
 
 启动命令：
 
-```
+```bash
 cd learn-claude-code
 python agents/s02_tool_use.py
 ```

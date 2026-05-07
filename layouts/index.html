@@ -1,0 +1,67 @@
+{{ define "main" }}
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+
+  <section class="tree-wrap" aria-label="最新文章树状图">
+    <section class="category-overview" aria-label="文章分类">
+      <h2>文章分类</h2>
+      <div class="category-overview-grid">
+        {{ range site.Taxonomies.categories.ByCount }}
+          <a class="category-overview-item" href="{{ .Page.RelPermalink }}">
+            <span class="category-name">{{ .Name }}</span>
+            <span class="category-count">{{ .Count }}</span>
+          </a>
+        {{ end }}
+      </div>
+    </section>
+
+    <div class="tree-root" aria-hidden="true">
+      <span class="root-dot"></span>
+      <span class="root-label">文章列表</span>
+    </div>
+    <div class="tree-trunk" aria-hidden="true"></div>
+    <div class="tree-grid">
+      <div class="tree-col left">
+        {{ range $index, $cat := site.Taxonomies.categories.ByCount }}
+          {{ if not (modBool $index 2) }}
+            <section class="tree-group left">
+            <span class="group-branch" aria-hidden="true"></span>
+            <div class="group-label">{{ $cat.Name }} <small>({{ $cat.Count }})</small></div>
+            <div class="group-list">
+              {{ range ($cat.Pages.ByDate.Reverse) }}
+                <article class="tree-node">
+                  <a href="{{ .RelPermalink }}" class="tree-card">
+                    <h2>{{ .Title }}</h2>
+                    <time datetime="{{ .Date.Format `2006-01-02` }}">{{ .Date.Format "2006-01-02" }}</time>
+                  </a>
+                </article>
+              {{ end }}
+            </div>
+            </section>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      <div class="tree-col right">
+        {{ range $index, $cat := site.Taxonomies.categories.ByCount }}
+          {{ if modBool $index 2 }}
+            <section class="tree-group right">
+            <span class="group-branch" aria-hidden="true"></span>
+            <div class="group-label">{{ $cat.Name }} <small>({{ $cat.Count }})</small></div>
+            <div class="group-list">
+              {{ range ($cat.Pages.ByDate.Reverse) }}
+                <article class="tree-node">
+                  <a href="{{ .RelPermalink }}" class="tree-card">
+                    <h2>{{ .Title }}</h2>
+                    <time datetime="{{ .Date.Format `2006-01-02` }}">{{ .Date.Format "2006-01-02" }}</time>
+                  </a>
+                </article>
+              {{ end }}
+            </div>
+            </section>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+{{ end }}

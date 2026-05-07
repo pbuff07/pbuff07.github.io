@@ -1,14 +1,9 @@
 ---
 title: "Google/Firefox禁用某些端口"
 date: 2025-02-14T14:00:00+08:00
-categories: ["杂文"]
 tags: ["google", "firefox"]
+categories: ["技术杂谈与科普"]
 ---
-
-
-
-
-
 因为浏览器内核和操作系统的不同，Google和Firefox都预设了一些端口禁止外部使用。比如访问 `http://IP:6666` 端口会提示端口不安全，不允许使用。
 
 解决办法：

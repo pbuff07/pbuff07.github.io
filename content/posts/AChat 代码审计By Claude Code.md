@@ -1,10 +1,9 @@
 ---
 title: "AChat 代码审计By Claude Code"
 date: 2026-04-09T10:30:00+08:00
-categories: ["安全"]
 tags: ["代码审计", "NestJS", "API安全"]
+categories: ["网络安全"]
 ---
-
 对 AChat（一个 ChatGPT 管理后台）进行了一次完整的安全审计，记录已确认的漏洞。
 
 项目技术栈是 NestJS + Fastify + Prisma，用的是 JWT 认证，结构比较清晰。

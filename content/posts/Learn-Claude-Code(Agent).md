@@ -1,12 +1,9 @@
 ---
 title: "Learn-Claude-Code(Agent)"
 date: 2026-03-20T17:00:00+08:00
-categories: ["编程"]
 tags: ["ai", "agent", "python", "anthropic", "deepseek"]
-toc: true
-numberedSubtitles: false
+categories: ["AI 工程"]
 ---
-
 最近跟着 [learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) 学习 Agent 的构建，这是一个很好的教程，帮助我更清晰地了解 AI Agent 到底是如何工作的。
 
 ## Agent 循环的本质
@@ -23,7 +20,7 @@ Agent 循环其实就是 `while True` 的过程：LLM 根据用户问题不断**
 
 首先初始化客户端，配置好系统提示词和工具（参数参考接口实现）。
 
-```
+```python
 from anthropic import Anthropic
 import os
 
@@ -53,7 +50,7 @@ tools = [{
 
 `main()` 函数负责持续接收用户输入，若有问题则传递给 `agent_loop` 开始调用模型完成任务。
 
-```
+```python
 if __name__ == "__main__":
     history = []
     while True:
@@ -73,7 +70,7 @@ if __name__ == "__main__":
 
 `agent_loop` 根据需求请求 LLM，然后判断响应中是否包含 `tool_use`（工具调用）。如果不包含则退出（说明没有需要继续处理的任务），如果包含则执行工具命令并继续循环。
 
-```
+```python
 def agent_loop(messages: list[dict]):
     while True:
         response = client.messages.create(
@@ -105,7 +102,7 @@ def agent_loop(messages: list[dict]):
 
 执行工具直接通过 `subprocess.run` 执行系统命令。
 
-```
+```python
 import subprocess
 
 def run_bash(command: str) -> str:

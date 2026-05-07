@@ -1,12 +1,9 @@
 ---
 title: "Langchain中create_agent和create_deep_agent对比"
 date: 2026-03-12T14:00:00+08:00
-categories: ["AI-Generate", "编程"]
 tags: ["langchain", "deepagent", "ai", "AI-Generate"]
-toc: true
-numberedSubtitles: false
+categories: ["AI 工程"]
 ---
-
 对比分析Langchain中`create_agent`和`create_deep_agent`两个函数的实现原理与差异。
 
 ---
@@ -15,7 +12,7 @@ numberedSubtitles: false
 
 `create_deep_agent`本质上是基于`create_agent`的高级封装：
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                    create_deep_agent                              │
 │  ┌─────────────────────────────────────────────────────────────┐ │
@@ -66,7 +63,7 @@ def model_node(state, runtime):
 
 ### 2.2 图结构
 
-```
+```text
 START
   │
   ▼
@@ -167,7 +164,7 @@ SubAgentMiddleware(backend=backend, subagents=all_subagents)
 
 ### 3.3 子代理工作原理
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                      Main Agent (主代理)                         │
 │                                                                  │
@@ -263,7 +260,7 @@ def create_deep_agent(...):
 
 ### 6.2 关注点分离
 
-```
+```text
 create_agent      → 负责"如何运行一个代理"
 create_deep_agent → 负责"配置什么样的代理"
 ```
@@ -308,7 +305,7 @@ agent = create_deep_agent(
 
 ## 八、总结
 
-```
+```text
 create_agent      = 引擎（提供机制）
 create_deep_agent = 汽车（提供产品）
 

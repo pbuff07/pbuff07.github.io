@@ -1,12 +1,9 @@
 ---
 title: "DeepAgent学习一"
 date: 2026-03-11T10:00:00+08:00
-categories: ["编程"]
 tags: ["deepagent", "langchain", "ai", "python"]
-toc: true
-numberedSubtitles: false
+categories: ["AI 工程"]
 ---
-
 AI时代学习知识还得回归古法，自己动手写代码去验证和实践，AI产出的东西始终都是AI的。
 
 要会用AI工具但也要懂如何设计AI工具。

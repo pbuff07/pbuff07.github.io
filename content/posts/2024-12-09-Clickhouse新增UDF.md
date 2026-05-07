@@ -1,14 +1,9 @@
 ---
 title: "Clickhouse编写UDF"
 date: 2024-12-09T14:00:00+08:00
-categories: ["Clickhouse"]
 tags: ["clickhouse", "udf"]
+categories: ["数据库"]
 ---
-
-
-
-
-
 # UDF
 
 UDF全称User Define Function，即用户自定义函数。新版本的Clickhouse支持用户自己定义sql查询用的函数，调用外部的Python、Shell、Golang的脚本即可。
@@ -45,7 +40,7 @@ UDF全称User Define Function，即用户自定义函数。新版本的Clickhous
 
 实际被调用的脚本接收的参数个数和类型需要和上述添加的xml配置文件对齐。
 
-```
+```bash
 #!/bin/bash
 
 while read domain; do

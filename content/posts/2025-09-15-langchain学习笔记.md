@@ -1,12 +1,9 @@
 ---
 title: "Langchain学习笔记"
 date: 2025-09-15T14:00:00+08:00
-categories: ["编程"]
 tags: ["langchain", "ai", "python"]
-toc: false
-numberedSubtitles: false
+categories: ["AI 工程"]
 ---
-
 最近在研究langchain和langgraph，记录一下学习过程。
 
 ---
