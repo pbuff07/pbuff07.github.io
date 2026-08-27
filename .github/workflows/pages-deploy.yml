@@ -1,15 +1,10 @@
-name: "Build and Deploy"
+name: Build and Deploy
 
 on:
   push:
     branches:
       - main
       - master
-    paths-ignore:
-      - .gitignore
-      - README.md
-      - LICENSE
-
   workflow_dispatch:
 
 permissions:
@@ -18,37 +13,31 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: true
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          hugo-version: '0.157.0'
-          extended: true
+          python-version: "3.x"
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       - name: Build site
-        run: hugo --minify --panicOnWarning
+        run: mkdocs build
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ./site
 
   deploy:
     environment:
@@ -56,7 +45,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

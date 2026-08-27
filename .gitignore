@@ -1,34 +1,13 @@
-# Bundler cache
-.bundle
-vendor
-Gemfile.lock
+.venv/
+site/
+__pycache__/
+*.pyc
+.DS_Store
+.cache/
 
-# Jekyll cache
-.jekyll-cache
-.jekyll-metadata
-_site
-
-# RubyGems
-*.gem
-
-# NPM dependencies
-node_modules
-
-# Hugo
-.hugo_build.lock
-resources/
-public/
-
-# IDE configurations
+# IDE
 .idea
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
 !.vscode/tasks.json
-
-# Misc
-_sass/vendors
-assets/js/dist
-
-# Self
-.DS_Store

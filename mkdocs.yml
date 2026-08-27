@@ -1,0 +1,205 @@
+site_name: 嘴强黑客 / pbuff07
+site_description: 赛博空间嘴强王者
+site_author: pbuff07
+site_url: https://pbuff.cc/
+
+copyright: Copyright &copy; 2021–2026 pbuff07
+
+theme:
+  name: material
+  language: zh
+  custom_dir: overrides
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+  font:
+    text: Noto Sans SC
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+  - tags:
+      listings_toc: false
+  - blog:
+      blog_dir: .
+      blog_toc: false
+      post_date_format: full
+      post_url_date_format: yyyy/MM/dd
+      post_url_format: "{date}/{slug}"
+      post_readtime: false
+      authors: false
+      categories: true
+      categories_name: 分类
+      categories_url_format: "category/{slug}"
+      categories_allowed:
+        - AI 工程
+        - 网络安全
+        - 网络协议
+        - 数据库
+        - 系统运维
+        - 数据处理与自动化
+        - 技术杂谈与科普
+        - 生活与阅读
+        - 路亚日记
+      archive: true
+      archive_name: 归档
+      archive_date_format: yyyy
+      archive_url_date_format: yyyy
+      archive_url_format: "archive/{date}"
+      pagination: true
+      pagination_per_page: 10
+  - rss:
+      match_path: posts/.*
+      use_git: false
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra_css:
+  - stylesheets/custom.css
+
+extra_javascript:
+  - javascripts/archive-sidebar.js
+  - javascripts/tags-index.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/pbuff07
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/Aarn63373424
+  tags:
+    AI: ai
+    AI-Generate: ai
+    AI生成: ai
+    ai: ai
+    agent: ai
+    anthropic: ai
+    deepagent: ai
+    deepseek: ai
+    distillation: ai
+    langchain: ai
+    python: lang
+    golang: lang
+    js: lang
+    clickhouse: db
+    sqlite: db
+    spark: db
+    nmap: net
+    nse: net
+    tcp: net
+    udp: net
+    nftables: ops
+    linux: ops
+    ssh: ops
+    vscode: ops
+    remote-ssh: ops
+    代码审计: security
+    API安全: security
+    NestJS: security
+    默认账号: security
+    密码: security
+    安全: security
+    爬虫: automation
+    excel: automation
+    wps: automation
+    宏: automation
+    数据处理: automation
+    数据分析: automation
+    json: automation
+    awk: automation
+    小程序: automation
+    公众号: automation
+    读书: life
+    读后感: life
+    历史小说: life
+    马伯庸: life
+    阅读: life
+    生僻字: life
+    笔记: life
+    随拍: life
+    路亚: life
+    白条: life
+    历史: life
+    地理: life
+    岭南: life
+    摩托车: misc
+    挖矿: misc
+    bitcoin: misc
+    cgi: misc
+    web安全: misc
+    google: misc
+    firefox: misc
+    编码: misc
+    utf16: misc
+    幻觉: ai
+    日志分析: ops
+    排查: ops
+    运维: ops
+    udf: db
+    rand: db
+    program: db
+    网络协议: net
+
+nav:
+  - 博客:
+      - index.md
+  - 标签: tags.md
+  - 我的猫: cats.md
+  - 关于: about.md

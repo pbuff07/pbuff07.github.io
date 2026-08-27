@@ -1,40 +1,22 @@
-# pbuff07.github.io
+# 嘴强黑客 / pbuff07
 
-pbuff07的个人博客，使用 [Hugo](https://gohugo.io) + [hugo-texify3](https://github.com/michaelneuper/hugo-texify3) 主题搭建。
+基于 [Material for MkDocs](https://github.com/squidfunk/mkdocs-material) 的个人博客，部署在 [pbuff.cc](https://pbuff.cc/)。
 
-## 本地运行
+## 本地预览
 
 ```bash
-# 安装 Hugo
-brew install hugo
-
-# 克隆仓库（含子模块）
-git clone --recurse-submodules https://github.com/pbuff07/pbuff07.github.io.git
-
-# 启动服务器
-cd pbuff07.github.io
-hugo server -D
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+mkdocs serve
 ```
 
-访问 http://localhost:1313
+浏览器访问 http://127.0.0.1:8000
 
 ## 新增文章
 
-在 `content/posts/` 目录下创建 `YYYY-MM-DD-标题.md` 文件：
-
-```yaml
----
-title: "文章标题"
-date: 2025-02-08T14:00:00+08:00
-categories: ["分类"]
-tags: ["标签"]
-toc: false
-numberedSubtitles: false
----
-
-文章内容...
-```
+在 `docs/posts/` 下创建 `YYYY-MM-DD-标题.md`，参考已有文章填写 front matter 即可。
 
 ## 部署
 
-推送到 main 分支后，GitHub Actions 自动构建部署到 GitHub Pages。
+推送到 `main` 分支后，GitHub Actions 自动构建并部署到 GitHub Pages。
