@@ -1,9 +1,11 @@
 .venv/
 site/
+public/
 __pycache__/
 *.pyc
 .DS_Store
 .cache/
+.hugo_build.lock
 
 # IDE
 .idea

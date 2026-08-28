@@ -1,0 +1,197 @@
+/* 深蓝偏紫主题色 */
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color: #283593;
+  --md-primary-fg-color--light: #3949ab;
+  --md-primary-fg-color--dark: #1a237e;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: #ffffffb3;
+  --md-typeset-a-color: #3949ab;
+}
+
+[data-md-color-scheme="slate"][data-md-color-primary="custom"] {
+  --md-primary-fg-color: #3949ab;
+  --md-primary-fg-color--light: #5c6bc0;
+  --md-primary-fg-color--dark: #283593;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: #ffffffb3;
+  --md-typeset-a-color: #7986cb;
+}
+
+/* 右侧归档栏样式 */
+.md-sidebar--secondary.md-sidebar--archive-active {
+  display: block;
+}
+
+.md-nav--archive > .md-nav__title {
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+  padding: 0 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.md-nav--archive .md-nav__list {
+  padding-left: 0;
+}
+
+.md-nav--archive .md-nav__link {
+  margin-top: 0.2rem;
+}
+
+/* 博客列表样式 */
+.md-post--excerpt {
+  margin: 0;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-post--excerpt:last-child {
+  border-bottom: 0;
+}
+
+.md-post--excerpt .md-post__header {
+  margin: 0;
+  padding: 0;
+}
+
+.md-post--excerpt .md-post__meta {
+  margin: 0;
+}
+
+.md-post--excerpt .md-meta__list {
+  margin: 0;
+  padding: 0;
+  gap: 0.35rem;
+}
+
+.md-post--excerpt .md-meta__item {
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-post--excerpt .md-post__content {
+  margin: 0.1rem 0 0;
+  padding: 0;
+}
+
+.md-post--excerpt .md-post__title {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.md-post--excerpt .md-post__title a {
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+}
+
+.md-post--excerpt .md-post__title a:hover {
+  color: var(--md-accent-fg-color);
+  text-decoration: underline;
+}
+
+.md-content__inner > .md-post--excerpt:first-of-type {
+  padding-top: 0.15rem;
+}
+
+/* 首页介绍卡片 */
+.blog-intro {
+  margin: 0.35rem 0 1.1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 18%, transparent);
+  border-left: 3px solid var(--md-primary-fg-color);
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--md-primary-fg-color) 7%, var(--md-default-bg-color)) 0%,
+    var(--md-code-bg-color) 100%
+  );
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--md-primary-fg-color) 10%, transparent);
+}
+
+.blog-intro > p {
+  margin: 0.35rem 0;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: var(--md-default-fg-color--light);
+}
+
+.blog-intro > p:first-child {
+  margin-top: 0;
+  font-size: 0.92rem;
+  color: var(--md-default-fg-color);
+}
+
+.blog-intro > p:last-child {
+  margin-bottom: 0;
+}
+
+/* 标签页顶部索引 */
+.tags-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.28rem;
+  margin: 0.35rem 0 1rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.35rem;
+  background: var(--md-code-bg-color);
+}
+
+.tags-overview__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.05rem 0.2rem 0.05rem 0.08rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s ease;
+}
+
+.tags-overview__item:hover {
+  background: var(--md-default-fg-color--lightest);
+}
+
+.tags-overview__item .md-tag {
+  margin: 0;
+  font-size: 0.62rem;
+  padding: 0.08em 0.38em;
+  line-height: 1.35;
+}
+
+.tags-overview__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0.95rem;
+  height: 0.95rem;
+  padding: 0 0.22rem;
+  border-radius: 999px;
+  font-size: 0.58rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--md-primary-bg-color);
+  background: var(--md-primary-fg-color);
+}
+
+/* 标签详情区块间距 */
+.md-content__inner.md-typeset > h2[id^="tag:"] {
+  margin-top: 1.4rem;
+  margin-bottom: 0.45rem;
+  font-size: 1rem;
+  scroll-margin-top: 4.5rem;
+}
+
+.md-content__inner.md-typeset > h2[id^="tag:"] + ul {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  padding-left: 1.2rem;
+}
+
+.md-content__inner.md-typeset > h2[id^="tag:"] + ul > li {
+  margin-bottom: 0.2rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
