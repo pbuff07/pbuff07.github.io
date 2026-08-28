@@ -9,13 +9,15 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,9 +37,14 @@ jobs:
           touch site/.nojekyll
           cp -f CNAME site/CNAME
 
-      # username.github.io 当前若仍是「Deploy from a branch / main」，
-      # 必须把构建产物写到 main 根目录，否则会回退成 Jekyll 渲染 README。
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+      # 兼容「Deploy from a branch」：把静态站点写到 main 根目录
       - name: Publish site to main root
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: site
@@ -64,3 +71,14 @@ jobs:
             public
             static
             hugo.toml
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
