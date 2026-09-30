@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大秦恩怨图</title>
+<style>
+  :root{
+    color-scheme: light;
+    /* 素笺为底、赭金为骨、朱砂为仇 —— 仿秦简帛与朱漆印章之视觉；
+       人物作星图辐射排布，边线以色定情仇 */
+    --bg:#f7f2e8;
+    --bg-2:#efe8d9;
+    --panel:#fdfaf3;
+    --node:#fefcf6;
+    --fg:#2c2418;
+    --muted:#6e6352;
+    --faint:#a2937c;
+    --line:#e4d9c2;
+    --gold:#b07d20;
+    --gold-soft:#c8a45a;
+    --jade:#37806f;
+    --red:#b23a2a;
+    --cinnabar:#bf5c1e;
+    --font-display:"Ma Shan Zheng","STKaiti","KaiTi",serif;
+    --font-body:"Noto Serif SC","Songti SC","STSong",serif;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--font-body);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:1240px; margin-inline:auto; padding-inline:clamp(16px,3vw,28px); padding-block:40px 72px; }
+
+  /* ---- hero ---- */
+  .eyebrow{ font-size:13px; letter-spacing:.32em; color:var(--muted); text-transform:uppercase; }
+  .title-row{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-block:14px 8px; }
+  .title{ margin:0; font-family:var(--font-display); font-weight:400; font-size:clamp(42px,7vw,68px); line-height:1.05; color:var(--gold); text-wrap:balance; }
+  .seal{
+    width:56px; height:56px; flex:0 0 56px; display:grid; place-items:center;
+    background:linear-gradient(160deg,#d4563f,#a22e1d); color:#f8e7db;
+    font-family:var(--font-display); font-size:32px; line-height:1;
+    border-radius:12px; transform:rotate(4deg);
+    box-shadow: inset 0 0 0 2px rgba(248,231,219,.45), 0 10px 24px rgba(0,0,0,.5);
+  }
+  .lede{ max-width:62ch; color:var(--muted); font-size:16px; margin:10px 0 0; }
+
+  /* ---- legend ---- */
+  .legend{ display:flex; flex-wrap:wrap; gap:10px 22px; padding:18px 20px; margin-block:28px 0;
+    background:var(--bg-2); border:1px solid var(--line); border-radius:14px; }
+  .lg{ display:inline-flex; align-items:center; gap:9px; font-size:14px; color:var(--muted); }
+  .sw{ width:26px; height:4px; border-radius:2px; display:inline-block; }
+
+  /* ---- stage / map ---- */
+  .stage{ margin-top:22px; background:radial-gradient(1200px 700px at 50% 42%, #fcf8ef, #f1ead9);
+    border:1px solid var(--line); border-radius:18px; padding:14px; }
+  .toolbar{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    padding:4px 6px 12px; }
+  .hint{ font-size:13px; color:var(--faint); }
+  .focus-name{ font-size:13px; color:var(--gold); font-weight:600; }
+  .reset-btn{
+    appearance:none; border:1px solid var(--gold-soft); background:transparent; color:var(--gold);
+    font-family:var(--font-body); font-size:13px; padding:6px 14px; border-radius:999px; cursor:pointer;
+  }
+  .reset-btn:hover{ background:var(--gold); color:#fff; border-color:var(--gold); }
+  .map-scroll{ overflow-x:auto; }
+  .map-holder{ width:100%; max-width:1180px; min-width:0; margin-inline:auto; }
+
+  #map{ display:block; width:100%; height:auto; }
+  .orbit{ fill:none; stroke:var(--line); stroke-width:1; stroke-dasharray:3 6; opacity:.6; }
+  .edge{ stroke-width:1.6; opacity:.85; transition:opacity .22s ease; }
+  .edge-pill{ fill:#fbf7ee; fill-opacity:.96; stroke-width:1; stroke-opacity:.5; }
+  .edge-label{ font-family:var(--font-body); font-size:14px; letter-spacing:.02em; }
+  .edge-label-g{ transition:opacity .22s ease; pointer-events:none; }
+  .node{ cursor:pointer; outline:none; transition:opacity .22s ease; }
+  .node-bg{ fill:var(--node); stroke:var(--gold-soft); stroke-width:1.4; transition:stroke .15s ease; }
+  .node:hover .node-bg, .node:focus-visible .node-bg{ stroke:var(--gold); stroke-width:2.2; }
+  .node-name{ fill:#2c2418; font-family:var(--font-body); font-weight:600; font-size:21px; }
+  .node-sub{ fill:var(--muted); font-family:var(--font-body); font-size:12.5px; }
+  .node.center .node-bg{ fill:url(#goldGrad); stroke:#e9c471; stroke-width:2; }
+  .node.center .node-name{ fill:#2a1d09; font-family:var(--font-display); font-size:30px; }
+  .node.center .node-sub{ fill:#4d3817; font-size:13px; }
+
+  /* ---- timeline ---- */
+  .section-title{ font-family:var(--font-display); font-size:30px; color:var(--fg); margin:52px 0 6px; }
+  .section-sub{ color:var(--faint); font-size:14px; margin:0 0 22px; }
+  .timeline{ display:flex; flex-wrap:wrap; gap:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--bg-2); }
+  .step{ flex:1 1 180px; min-width:0; padding:18px 20px; border-left:1px solid var(--line); }
+  .step:first-child{ border-left:0; }
+  .step .yr{ font-family:var(--font-display); font-size:22px; color:var(--gold); }
+  .step .tt{ font-size:15px; font-weight:600; color:var(--fg); margin-top:2px; }
+  .step .ds{ font-size:13px; color:var(--muted); margin-top:4px; }
+
+  /* ---- cards ---- */
+  .cards{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; margin-top:8px; }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px;
+    transition:box-shadow .2s ease, border-color .2s ease; }
+  .card.lit{ border-color:var(--gold); box-shadow:0 0 0 2px rgba(214,166,74,.45); }
+  .card-head{ display:flex; align-items:baseline; gap:9px; flex-wrap:wrap; }
+  .dot{ width:9px; height:9px; border-radius:50%; align-self:center; flex:0 0 auto; }
+  .card h3{ margin:0; font-family:var(--font-display); font-weight:400; font-size:25px; color:var(--fg); }
+  .role{ font-size:12.5px; color:var(--muted); letter-spacing:.04em; }
+  .story{ margin:12px 0 0; font-size:14px; color:var(--muted); }
+  .tone-royal .dot{ background:var(--gold); }
+  .tone-royal .role{ color:var(--gold); }
+  .tone-minister .dot{ background:var(--jade); }
+  .tone-minister .role{ color:var(--jade); }
+  .tone-villain .dot{ background:var(--red); }
+  .tone-villain .role{ color:var(--red); }
+  .tone-rebel .dot{ background:var(--cinnabar); }
+  .tone-rebel .role{ color:var(--cinnabar); }
+
+  .note{ margin-top:34px; padding:14px 18px; border-left:3px solid var(--gold-soft);
+    background:var(--bg-2); color:var(--faint); font-size:13px; border-radius:6px; }
+
+  @media (max-width:560px){
+    .seal{ width:44px; height:44px; flex-basis:44px; font-size:25px; }
+    .timeline{ flex-direction:column; }
+    .step{ border-left:0; border-top:1px solid var(--line); }
+    .step:first-child{ border-top:0; }
+  }
+  @media (prefers-reduced-motion:reduce){ *{ transition:none !important; animation:none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">秦 · 公元前 221 — 前 206 · 恩怨关系图</div>
+    <div class="title-row">
+      <h1 class="title">大秦恩怨图</h1>
+      <div class="seal" aria-hidden="true">秦</div>
+    </div>
+    <p class="lede">始皇帝身死沙丘，一纸矫诏，父子相残、君臣反目，最终点燃大泽乡的烽火，把偌大帝国烧成灰烬。此图梳理其间人物的恩怨情仇。</p>
+  </header>
+
+  <div class="legend" aria-label="关系类型图例">
+    <span class="lg"><i class="sw" style="background:var(--gold)"></i>血缘 · 父子</span>
+    <span class="lg"><i class="sw" style="background:var(--jade)"></i>君臣 · 同盟</span>
+    <span class="lg"><i class="sw" style="background:var(--red)"></i>仇怨 · 背叛</span>
+    <span class="lg"><i class="sw" style="background:var(--cinnabar)"></i>反秦 · 起义</span>
+  </div>
+
+  <section class="stage">
+    <div class="toolbar">
+      <span class="hint">点击图中人物，聚焦其恩怨关系 · 再次点击取消</span>
+      <span class="focus-name" id="focusName"></span>
+      <button class="reset-btn" id="resetBtn" hidden>重置</button>
+    </div>
+    <div class="map-scroll">
+      <div class="map-holder">
+        <svg id="map" viewBox="0 0 1280 1080" role="img" aria-label="大秦帝国人物恩怨情仇关系图">
+          <defs>
+            <radialGradient id="halo">
+              <stop offset="0" stop-color="#d6a64a" stop-opacity=".30"/>
+              <stop offset="1" stop-color="#d6a64a" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e9c873"/>
+              <stop offset="1" stop-color="#b8893a"/>
+            </linearGradient>
+          </defs>
+          <circle cx="620" cy="500" r="300" class="orbit"/>
+          <circle cx="620" cy="500" r="460" class="orbit"/>
+          <g id="gEdges"></g>
+          <g id="gLabels"></g>
+          <g id="gNodes"></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="section-title">因果链</h2>
+  <p class="section-sub">从一场篡改的遗诏，到大秦的覆灭。</p>
+  <div class="timeline">
+    <div class="step"><div class="yr">前210</div><div class="tt">沙丘之变</div><div class="ds">始皇崩，赵高、李斯矫诏</div></div>
+    <div class="step"><div class="yr">前210</div><div class="tt">扶苏赐死</div><div class="ds">伪诏逼死长子</div></div>
+    <div class="step"><div class="yr">前209</div><div class="tt">大泽乡起义</div><div class="ds">陈胜、吴广揭竿而起</div></div>
+    <div class="step"><div class="yr">前207</div><div class="tt">二世被弑</div><div class="ds">赵高逼死胡亥</div></div>
+    <div class="step"><div class="yr">前206</div><div class="tt">秦亡</div><div class="ds">子婴降刘邦，入咸阳</div></div>
+  </div>
+
+  <h2 class="section-title">人物志</h2>
+  <p class="section-sub">点选上方图中人物，可联动高亮其恩怨关系。</p>
+  <div class="cards" id="grid">
+    <article class="card tone-royal" data-id="shihuang">
+      <div class="card-head"><span class="dot"></span><h3>秦始皇</h3><span class="role">秦王朝建立者</span></div>
+      <p class="story">一统六国，书同文、车同轨，但也焚书坑儒、徭役繁重，埋下民怨。晚年东巡，崩于沙丘。尸骨未寒，近臣赵高与丞相李斯便合谋篡改遗诏。</p>
+    </article>
+    <article class="card tone-royal" data-id="fusu">
+      <div class="card-head"><span class="dot"></span><h3>扶苏</h3><span class="role">皇长子 · 监军上郡</span></div>
+      <p class="story">为人仁厚，因谏止「坑儒」触怒父皇，被贬往上郡监军，随蒙恬。沙丘之变中接到伪诏，被迫自尽。其贤名日后被陈胜、吴广借作起义旗帜。</p>
+    </article>
+    <article class="card tone-royal" data-id="huhai">
+      <div class="card-head"><span class="dot"></span><h3>胡亥</h3><span class="role">少子 · 秦二世</span></div>
+      <p class="story">被赵高、李斯扶立为二世。即位后屠戮兄弟姐妹、诛杀大臣，纵情享乐、法令愈苛。终被赵高逼死于望夷宫，大秦二世而亡。</p>
+    </article>
+    <article class="card tone-royal" data-id="sons">
+      <div class="card-head"><span class="dot"></span><h3>儿子</h3><span class="role">秦始皇其余子女</span></div>
+      <p class="story">胡亥即位后为绝后患，将兄弟姐妹几乎屠戮殆尽——「公子十二人戮死于咸阳，公主十人矺死于杜」。</p>
+    </article>
+    <article class="card tone-villain" data-id="zhaogao">
+      <div class="card-head"><span class="dot"></span><h3>赵高</h3><span class="role">宦官 · 中车府令</span></div>
+      <p class="story">沙丘之变主谋：伪造遗诏赐死扶苏、扶立胡亥；「指鹿为马」排除异己，构陷腰斩李斯、怂恿诛杀诸公子；终逼死胡亥，自己亦被子婴所杀。</p>
+    </article>
+    <article class="card tone-minister" data-id="lisi">
+      <div class="card-head"><span class="dot"></span><h3>李斯</h3><span class="role">法家 · 丞相</span></div>
+      <p class="story">助秦始皇统一文字度量衡、议焚书。沙丘之变中为保相位与赵高合谋，默许赐死扶苏。后遭赵高构陷「谋反」，腰斩于咸阳、夷三族。</p>
+    </article>
+    <article class="card tone-minister" data-id="liyou">
+      <div class="card-head"><span class="dot"></span><h3>李由</h3><span class="role">李斯长子 · 三川郡守</span></div>
+      <p class="story">任三川郡守，起义军过境时未能阻遏，成为赵高构陷其父的口实。后与刘邦军战于雍丘，兵败战死。</p>
+    </article>
+    <article class="card tone-minister" data-id="ministers">
+      <div class="card-head"><span class="dot"></span><h3>其他大臣</h3><span class="role">朝廷群臣</span></div>
+      <p class="story">蒙恬、蒙毅为扶苏倚重、与赵高有宿怨，先后被杀；冯去疾、冯劫谏言被逼自杀；章邯力挽败局却降于项羽；子婴诛赵高、降刘邦，为秦收尾。</p>
+    </article>
+    <article class="card tone-rebel" data-id="chensheng">
+      <div class="card-head"><span class="dot"></span><h3>陈胜 · 吴广</h3><span class="role">大泽乡起义领袖</span></div>
+      <p class="story">因大雨失期、按律当斩，于大泽乡揭竿而起，「王侯将相宁有种乎」。诈称公子扶苏、项燕名号起兵，点燃反秦烽火。</p>
+    </article>
+    <article class="card tone-rebel" data-id="liubang">
+      <div class="card-head"><span class="dot"></span><h3>刘邦</h3><span class="role">泗水亭长 · 汉开国皇帝</span></div>
+      <p class="story">曾任秦之亭长，后起兵反秦。前206年入咸阳、受子婴降，秦亡；其军曾击杀李由于雍丘。后楚汉相争，建立汉朝。</p>
+    </article>
+  </div>
+
+  <div class="note">注：赵高为赵国后裔、借复仇以亡秦之说，多见于后世演绎与文学，正史未载。本图据《史记》通行记载整理。</div>
+</div>
+
+<script>
+(function(){
+  var PEOPLE = [
+    {id:'shihuang', name:'秦始皇', sub:'嬴政 · 始皇帝', x:620, y:500, center:true},
+    {id:'fusu', name:'扶苏', sub:'皇长子', x:620, y:110},
+    {id:'huhai', name:'胡亥', sub:'秦二世', x:1150, y:230},
+    {id:'sons', name:'儿子', sub:'诸公子·公主', x:195, y:235},
+    {id:'zhaogao', name:'赵高', sub:'中车府令', x:330, y:400},
+    {id:'lisi', name:'李斯', sub:'丞相', x:1040, y:430},
+    {id:'liyou', name:'李由', sub:'三川郡守', x:1040, y:800},
+    {id:'ministers', name:'其他大臣', sub:'蒙恬·蒙毅·章邯', x:620, y:900},
+    {id:'chensheng', name:'陈胜·吴广', sub:'大泽乡起义', x:180, y:855},
+    {id:'liubang', name:'刘邦', sub:'汉高祖', x:1150, y:1010}
+  ];
+  var EDGES = [
+    ['shihuang','fusu','blood','父子 · 贬谪上郡'],
+    ['shihuang','huhai','blood','父子 · 随巡沙丘'],
+    ['shihuang','sons','blood','父子 · 众子女'],
+    ['lisi','liyou','blood','父子'],
+    ['shihuang','lisi','loyal','君臣 · 倚为丞相'],
+    ['shihuang','zhaogao','loyal','近臣 · 中车府令'],
+    ['shihuang','ministers','loyal','君臣 · 群臣辅弼'],
+    ['zhaogao','huhai','loyal','师徒 · 沙丘扶立'],
+    ['zhaogao','lisi','grudge','合谋 → 构陷腰斩'],
+    ['zhaogao','fusu','grudge','矫诏 · 赐死'],
+    ['zhaogao','ministers','grudge','宿怨蒙氏 · 除异己'],
+    ['zhaogao','sons','grudge','怂恿 · 诛诸公子'],
+    ['huhai','fusu','grudge','兄弟 · 夺位相残'],
+    ['huhai','sons','grudge','屠戮手足'],
+    ['lisi','huhai','grudge','辅佐 → 反被诛'],
+    ['lisi','fusu','grudge','忌惮 · 默许矫诏'],
+    ['shihuang','chensheng','revolt','苛政 · 逼反'],
+    ['chensheng','fusu','revolt','诈称公子扶苏'],
+    ['shihuang','liubang','revolt','秦吏 · 起兵反秦'],
+    ['liubang','huhai','revolt','灭秦 · 入咸阳'],
+    ['liubang','liyou','revolt','击杀于雍丘']
+  ];
+  var TYPE = { blood:'var(--gold)', loyal:'var(--jade)', grudge:'var(--red)', revolt:'var(--cinnabar)' };
+  var byId = {};
+  PEOPLE.forEach(function(p){ byId[p.id] = p; });
+
+  var NS = 'http://www.w3.org/2000/svg';
+  function mk(name, attrs){ var n=document.createElementNS(NS,name); for(var k in attrs) n.setAttribute(k, attrs[k]); return n; }
+  function labelW(s){ var w=0; for(var i=0;i<s.length;i++){ var c=s[i]; w += (c===' '?4 : (c==='·'?6 : (c==='→'?11 : 14))); } return w+18; }
+
+  var gE=document.getElementById('gEdges'), gL=document.getElementById('gLabels'), gN=document.getElementById('gNodes');
+
+  EDGES.forEach(function(e){
+    var A=byId[e[0]], B=byId[e[1]];
+    var line=mk('line',{x1:A.x, y1:A.y, x2:B.x, y2:B.y, 'class':'edge', 'data-a':e[0], 'data-b':e[1]});
+    line.style.stroke = TYPE[e[2]];
+    gE.appendChild(line);
+    var mx=(A.x+B.x)/2, my=(A.y+B.y)/2, w=labelW(e[3]);
+    var g=mk('g',{'class':'edge-label-g','data-a':e[0],'data-b':e[1]});
+    var r=mk('rect',{x:mx-w/2, y:my-13, width:w, height:26, rx:13, 'class':'edge-pill'});
+    r.style.stroke = TYPE[e[2]];
+    var t=mk('text',{x:mx, y:my+4.5, 'class':'edge-label', 'text-anchor':'middle'});
+    t.style.fill = TYPE[e[2]];
+    t.textContent = e[3];
+    g.appendChild(r); g.appendChild(t);
+    gL.appendChild(g);
+  });
+
+  PEOPLE.forEach(function(p){
+    var g=mk('g',{'class':'node'+(p.center?' center':''), transform:'translate('+p.x+','+p.y+')', 'data-id':p.id, tabindex:'0', role:'button'});
+    if(p.center){ g.appendChild(mk('circle',{r:112, fill:'url(#halo)'})); }
+    var w=p.center?200:172, h=p.center?88:70;
+    g.appendChild(mk('rect',{x:-w/2, y:-h/2, width:w, height:h, rx:p.center?16:14, 'class':'node-bg'}));
+    var nm=mk('text',{x:0, y:p.center?-2:-4, 'class':'node-name', 'text-anchor':'middle'});
+    nm.textContent = p.name; g.appendChild(nm);
+    var sb=mk('text',{x:0, y:p.center?25:21, 'class':'node-sub', 'text-anchor':'middle'});
+    sb.textContent = p.sub; g.appendChild(sb);
+    g.addEventListener('click', function(){ toggle(p.id); });
+    g.addEventListener('keydown', function(ev){ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); toggle(p.id); } });
+    gN.appendChild(g);
+  });
+
+  var focusId = null, focusName = document.getElementById('focusName'), resetBtn = document.getElementById('resetBtn');
+  function related(id){
+    var nodes={}, edges={}; nodes[id]=1;
+    EDGES.forEach(function(e,i){ if(e[0]===id||e[1]===id){ edges[i]=1; nodes[e[0]]=1; nodes[e[1]]=1; } });
+    return {nodes:nodes, edges:edges};
+  }
+  function toggle(id){ focusId = (focusId===id) ? null : id; paint(); }
+  function paint(){
+    var es=gE.querySelectorAll('.edge'), ls=gL.querySelectorAll('.edge-label-g'), ns=gN.querySelectorAll('.node');
+    var cards=document.querySelectorAll('.card');
+    if(!focusId){
+      es.forEach(function(p){ p.style.opacity=''; });
+      ls.forEach(function(g){ g.style.opacity=''; });
+      ns.forEach(function(g){ g.style.opacity=''; });
+      cards.forEach(function(c){ c.classList.remove('lit'); });
+      focusName.textContent=''; resetBtn.hidden=true;
+      return;
+    }
+    var r=related(focusId);
+    es.forEach(function(p,i){ p.style.opacity = r.edges[i] ? '1' : '0.12'; });
+    ls.forEach(function(g,i){ g.style.opacity = r.edges[i] ? '1' : '0.12'; });
+    ns.forEach(function(g){ g.style.opacity = r.nodes[g.getAttribute('data-id')] ? '1' : '0.25'; });
+    cards.forEach(function(c){ c.classList.toggle('lit', c.getAttribute('data-id')===focusId); });
+    focusName.textContent = '聚焦：' + byId[focusId].name;
+    resetBtn.hidden=false;
+  }
+  resetBtn.addEventListener('click', function(){ focusId=null; paint(); });
+})();
+</script>
+<script>(function(){function r(){try{parent.postMessage({qinMapHeight:document.documentElement.scrollHeight},"*")}catch(e){}}window.addEventListener("load",r);window.addEventListener("resize",r);setTimeout(r,250);setTimeout(r,600);})();</script>
+</body>
+</html>

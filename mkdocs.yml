@@ -63,6 +63,7 @@ plugins:
         - 系统运维
         - 数据处理与自动化
         - 技术杂谈与科普
+        - 图解历史
         - 生活与阅读
         - 路亚日记
       archive: true
@@ -177,6 +178,8 @@ extra:
     路亚: life
     白条: life
     历史: life
+    秦始皇: life
+    思维导图: misc
     地理: life
     岭南: life
     摩托车: misc
