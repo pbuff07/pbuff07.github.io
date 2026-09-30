@@ -12,34 +12,34 @@
         <meta name="author" content="pbuff07">
       
       
-        <link rel="canonical" href="https://pbuff.cc/2022/05/14/tcp%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/">
+        <link rel="canonical" href="https://pbuff.cc/category/%E5%9B%BE%E8%A7%A3%E5%8E%86%E5%8F%B2/">
       
       
-        <link rel="prev" href="../../../../2021/11/23/%E5%8F%A4%E4%BB%A3%E6%89%80%E6%8C%87%E7%9A%84%E5%B2%AD%E5%8D%97/">
+        <link rel="prev" href="../ai-%E5%B7%A5%E7%A8%8B/">
       
       
-        <link rel="next" href="../../../08/30/cgi%E5%90%8E%E7%BC%80%E6%96%87%E4%BB%B6/">
+        <link rel="next" href="../%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88%E4%B8%8E%E7%A7%91%E6%99%AE/">
       
       
         
       
       
-        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../../feed_rss_created.xml">
-        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../../../feed_rss_updated.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../feed_rss_updated.xml">
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>TCP协议基础 - 嘴强黑客 / pbuff07</title>
+        <title>图解历史 - 嘴强黑客 / pbuff07</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -58,9 +58,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../stylesheets/custom.css">
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tcp" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../.." title="嘴强黑客 / pbuff07" class="md-header__button md-logo" aria-label="嘴强黑客 / pbuff07" data-md-component="logo">
+    <a href="../.." title="嘴强黑客 / pbuff07" class="md-header__button md-logo" aria-label="嘴强黑客 / pbuff07" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TCP协议基础
+              图解历史
             
           </span>
         </div>
@@ -224,7 +224,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../.." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   
@@ -242,7 +242,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../tags/" class="md-tabs__link">
+      <a href="../../tags/" class="md-tabs__link">
         
   
   
@@ -261,7 +261,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../cats/" class="md-tabs__link">
+      <a href="../../cats/" class="md-tabs__link">
         
   
   
@@ -280,7 +280,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../about/" class="md-tabs__link">
+      <a href="../../about/" class="md-tabs__link">
         
   
   
@@ -304,9 +304,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -317,7 +315,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="嘴强黑客 / pbuff07" class="md-nav__button md-logo" aria-label="嘴强黑客 / pbuff07" data-md-component="logo">
+    <a href="../.." title="嘴强黑客 / pbuff07" class="md-nav__button md-logo" aria-label="嘴强黑客 / pbuff07" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -389,14 +387,12 @@
                 
   
   
-    
-  
   
     
   
   
-    <li class="md-nav__item md-nav__item--active">
-      <a href="../../../.." class="md-nav__link">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -481,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../archive/2026/" class="md-nav__link">
+      <a href="../../archive/2026/" class="md-nav__link">
         
   
   
@@ -511,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../archive/2025/" class="md-nav__link">
+      <a href="../../archive/2025/" class="md-nav__link">
         
   
   
@@ -541,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../archive/2024/" class="md-nav__link">
+      <a href="../../archive/2024/" class="md-nav__link">
         
   
   
@@ -571,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../archive/2023/" class="md-nav__link">
+      <a href="../../archive/2023/" class="md-nav__link">
         
   
   
@@ -601,7 +597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../archive/2022/" class="md-nav__link">
+      <a href="../../archive/2022/" class="md-nav__link">
         
   
   
@@ -631,7 +627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../archive/2021/" class="md-nav__link">
+      <a href="../../archive/2021/" class="md-nav__link">
         
   
   
@@ -664,6 +660,8 @@
                 
   
   
+    
+  
   
   
     
@@ -679,11 +677,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" checked>
         
           
           <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
@@ -704,7 +702,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -724,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/ai-%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+      <a href="../ai-%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
         
   
   
@@ -749,12 +747,23 @@
                 
   
   
-  
     
   
   
-    <li class="md-nav__item">
-      <a href="../../../../category/%E5%9B%BE%E8%A7%A3%E5%8E%86%E5%8F%B2/" class="md-nav__link">
+    
+      
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -770,6 +779,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -784,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88%E4%B8%8E%E7%A7%91%E6%99%AE/" class="md-nav__link">
+      <a href="../%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88%E4%B8%8E%E7%A7%91%E6%99%AE/" class="md-nav__link">
         
   
   
@@ -814,7 +824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8C%96/" class="md-nav__link">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8C%96/" class="md-nav__link">
         
   
   
@@ -844,7 +854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="md-nav__link">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93/" class="md-nav__link">
         
   
   
@@ -874,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/%E7%94%9F%E6%B4%BB%E4%B8%8E%E9%98%85%E8%AF%BB/" class="md-nav__link">
+      <a href="../%E7%94%9F%E6%B4%BB%E4%B8%8E%E9%98%85%E8%AF%BB/" class="md-nav__link">
         
   
   
@@ -904,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" class="md-nav__link">
+      <a href="../%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" class="md-nav__link">
         
   
   
@@ -934,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+      <a href="../%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
         
   
   
@@ -964,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="md-nav__link">
+      <a href="../%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="md-nav__link">
         
   
   
@@ -994,7 +1004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/%E8%B7%AF%E4%BA%9A%E6%97%A5%E8%AE%B0/" class="md-nav__link">
+      <a href="../%E8%B7%AF%E4%BA%9A%E6%97%A5%E8%AE%B0/" class="md-nav__link">
         
   
   
@@ -1037,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../tags/" class="md-nav__link">
+      <a href="../../tags/" class="md-nav__link">
         
   
   
@@ -1064,7 +1074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../cats/" class="md-nav__link">
+      <a href="../../cats/" class="md-nav__link">
         
   
   
@@ -1091,7 +1101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   
@@ -1119,8 +1129,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -1140,150 +1148,49 @@
             
           
           
-  <div class="md-content md-content--post" data-md-component="content">
-    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
-      <div class="md-sidebar__scrollwrap">
-        <div class="md-sidebar__inner md-post">
-          <nav class="md-nav md-nav--primary">
-            <div class="md-post__back">
-              <div class="md-nav__title md-nav__container">
-                <a href="../../../.." class="md-nav__link">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-                  <span class="md-ellipsis">
-                    回到主页
-                  </span>
-                </a>
-              </div>
-            </div>
-            <ul class="md-post__meta md-nav__list">
-              <li class="md-nav__item md-nav__item--section">
-                <div class="md-post__title">
-                  <span class="md-ellipsis">
-                    元数据
-                  </span>
-                </div>
-                <nav class="md-nav">
-                  <ul class="md-nav__list">
-                    <li class="md-nav__item">
-                      <div class="md-nav__link">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2022-05-14 00:00:00+00:00" class="md-ellipsis">2022年5月14日星期六</time>
-                      </div>
-                    </li>
-                    
-                    
-                      <li class="md-nav__item">
-                        <div class="md-nav__link">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
-                          <span class="md-ellipsis">
-                            分类于
-                            
-                              <a href="../../../../category/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a></span>
-                        </div>
-                      </li>
-                    
-                  </ul>
-                </nav>
-              </li>
-            </ul>
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="_1">图解历史<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+      </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-09-30 00:00:00+00:00">2026年9月30日星期三</time>
+        </li>
+        
+          <li class="md-meta__item">
+            分类于
             
-          </nav>
-          
-        </div>
-      </div>
+              <a href="./" class="md-meta__link">图解历史</a></li>
+        
+      </ul>
     </div>
-    <article class="md-content__inner md-typeset">
-      
-        
-  
-
-
-  <nav class="md-tags" >
+  </header>
+  <div class="md-post__content md-typeset">
     
+      <p class="md-post__title">
+        <a href="../../2026/09/30/%E5%A4%A7%E7%A7%A6%E6%81%A9%E6%80%A8%E5%9B%BE/">大秦恩怨图</a>
+      </p>
+    
+  </div>
+</article>
       
       
-      
-        
         
           
-        
-      
-      
-        <a href="../../../../tags/#tag:tcp" class="md-tag md-tag-icon md-tag--net">tcp</a>
-      
-    
-      
-      
-      
-        
-        
-          
-        
-      
-      
-        <a href="../../../../tags/#tag:网络协议" class="md-tag md-tag-icon md-tag--net">网络协议</a>
-      
-    
-  </nav>
 
 
 
-<h1 id="tcp">TCP协议基础<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h1>
-<p><strong>tcp协议基本连接</strong></p>
-<p>三次握手和四次挥手</p>
-<p>我通过执行<code>curl http://74.121.150.28</code>捕获的WireShark数据来分析tcp协议的基本连接过程，如下图所示：</p>
-<!-- more -->
-
-<p><img alt="image-20251117234728404" src="https://pbuff-blogs-1257793641.cos.ap-chengdu.myqcloud.com//blogsimage-20251117234728404.png" /></p>
-<p>59（客户端IP别称）想7428（服务端IP别称）的三次握手如上图所示，59发送SYN数据包到7428，服务端7428收到之后响应SYN+ACK数据包，然后客户端回复ACK数据包以表示收到服务端的响应。</p>
-<hr />
-<p>Seq（序列号）：TCP是有序的，当数据包延迟或者提前到达了服务端在无序的状态下也可以根据Seq号进行排序，进而判断出是否丢包、是否乱序等问题。TCP是双向的所以客户端和服务端各维护了一个Seq号。</p>
-<p>Seq的增长方式是Seq = Seq + Len（数据段长度），特别注意："TCP SYN 和 FIN 即便没有数据，也会消耗 1 个序列号"</p>
-<p>如上图所示，27号包Seq=0，Len=0，由客户端维护的31号包Seq=1，Len=0（因为SYN包会消耗一个序列号，这是标准行为中确定的）</p>
-<p><img alt="image-20251117234720113" src="https://pbuff-blogs-1257793641.cos.ap-chengdu.myqcloud.com//blogsimage-20251117234720113.png" /></p>
-<p>我将用上图客户端侧（59）维护的Seq来说明下具体Seq号增长的过程：</p>
-<p>1、初始SYN数据包，Seq=0，因为SYN和FIN即便Len=0没有数据也会消耗一个Seq</p>
-<p>2、所以31号包的Seq=1，Len=0</p>
-<p>3、32号包因为HTTP协议发送了Len=76的数据，Seq=1</p>
-<p>4、46号包的Seq=76+1=77，此时Len=0</p>
-<p>5、47号包的Seq = 77 + Len（0），因为47号包发送的FIN+ACK包，上述说了FIN包也会消耗一个Seq，所以Seq=77+1=78，此时Len=0</p>
-<p>6、56号包是ACK响应包，Seq = 78 + Len（0） = 78</p>
-<p>基于上述的过程，有服务端维护的Seq号也是同样的增长逻辑。分析Seq的需要注意SYN/FIN也会消耗一个Seq</p>
-<hr />
-<p>Ack（确认号）：</p>
-<p><strong>nmap的-sS参数扫描</strong></p>
-<p>-sS 使用TCP SYN扫描目标</p>
-<p>-sS参数扫描的显著特点是短时间内向目标IP的指定端口（默认是全部）发送大量的SYN探测数据包。</p>
-<p>如果服务端响应SYN+ACK数据包则说明该端口开放，客户端立即发送RST+ACK数据包断开连接；如果服务端不响应SYN+ACK数据包则说明端口未开放</p>
-<p><img alt="image-20251117234647633" src="https://pbuff-blogs-1257793641.cos.ap-chengdu.myqcloud.com//blogsimage-20251117234647633.png" /></p>
-<p><strong>nmap的-sT参数扫描</strong></p>
-<p>-sT使用TCP完整连接扫描目标</p>
-<p>sT参数是全连接，也就是会包含SYN、SYN+ACK、ACK响应三次握手的全过程。如果三次握手成功，则端口开放，客户端在三次握手之后直接发送RST+ACK数据包终止连接；如果三次握手失败则端口不开放。</p>
-<p>如下图所示，建立连接的过程就是标准的三次握手过程，不同的是没有四次挥手（双向的FIN+ACK和ACK确认），而是在服务端响应之后直接RST+ACK数据包关闭连接。</p>
-<p><img alt="image-20251118214927798" src="https://pbuff-blogs-1257793641.cos.ap-chengdu.myqcloud.com//blogsimage-20251118214927798.png" /></p>
-<p><strong>nmap的-sF参数扫描</strong></p>
-<p>-sF只发送FIN数据包进行探测，如果端口开放则没有任何响应，如果端口关闭则服务端会响应RST数据包，这个和-sS和-sT判断结果方式不太一样，是反着来的。</p>
-<p><strong>nmap的sW参数扫描</strong></p>
-<p>87.182.115.208</p>
-
-
-
-
-
-
-
+<nav class="md-pagination">
   
-  
-
-
-
-
-  
-
-
-
+</nav>
+        
       
-    </article>
+    </div>
   </div>
 
           
@@ -1356,14 +1263,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": {"AI": "ai", "AI-Generate": "ai", "AI\u751f\u6210": "ai", "API\u5b89\u5168": "security", "NestJS": "security", "agent": "ai", "ai": "ai", "anthropic": "ai", "awk": "automation", "bitcoin": "misc", "cgi": "misc", "clickhouse": "db", "deepagent": "ai", "deepseek": "ai", "distillation": "ai", "excel": "automation", "firefox": "misc", "golang": "lang", "google": "misc", "js": "lang", "json": "automation", "langchain": "ai", "linux": "ops", "nftables": "ops", "nmap": "net", "nse": "net", "program": "db", "python": "lang", "rand": "db", "remote-ssh": "ops", "spark": "db", "sqlite": "db", "ssh": "ops", "tcp": "net", "udf": "db", "udp": "net", "utf16": "misc", "vscode": "ops", "web\u5b89\u5168": "misc", "wps": "automation", "\u4ee3\u7801\u5ba1\u8ba1": "security", "\u516c\u4f17\u53f7": "automation", "\u5386\u53f2": "life", "\u5386\u53f2\u5c0f\u8bf4": "life", "\u5730\u7406": "life", "\u5b89\u5168": "security", "\u5b8f": "automation", "\u5bc6\u7801": "security", "\u5c0f\u7a0b\u5e8f": "automation", "\u5cad\u5357": "life", "\u5e7b\u89c9": "ai", "\u601d\u7ef4\u5bfc\u56fe": "misc", "\u6316\u77ff": "misc", "\u6392\u67e5": "ops", "\u6469\u6258\u8f66": "misc", "\u6570\u636e\u5206\u6790": "automation", "\u6570\u636e\u5904\u7406": "automation", "\u65e5\u5fd7\u5206\u6790": "ops", "\u722c\u866b": "automation", "\u751f\u50fb\u5b57": "life", "\u767d\u6761": "life", "\u79e6\u59cb\u7687": "life", "\u7b14\u8bb0": "life", "\u7f16\u7801": "misc", "\u7f51\u7edc\u534f\u8bae": "net", "\u8bfb\u4e66": "life", "\u8bfb\u540e\u611f": "life", "\u8def\u4e9a": "life", "\u8fd0\u7ef4": "ops", "\u9605\u8bfb": "life", "\u968f\u62cd": "life", "\u9a6c\u4f2f\u5eb8": "life", "\u9ed8\u8ba4\u8d26\u53f7": "security"}, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": {"AI": "ai", "AI-Generate": "ai", "AI\u751f\u6210": "ai", "API\u5b89\u5168": "security", "NestJS": "security", "agent": "ai", "ai": "ai", "anthropic": "ai", "awk": "automation", "bitcoin": "misc", "cgi": "misc", "clickhouse": "db", "deepagent": "ai", "deepseek": "ai", "distillation": "ai", "excel": "automation", "firefox": "misc", "golang": "lang", "google": "misc", "js": "lang", "json": "automation", "langchain": "ai", "linux": "ops", "nftables": "ops", "nmap": "net", "nse": "net", "program": "db", "python": "lang", "rand": "db", "remote-ssh": "ops", "spark": "db", "sqlite": "db", "ssh": "ops", "tcp": "net", "udf": "db", "udp": "net", "utf16": "misc", "vscode": "ops", "web\u5b89\u5168": "misc", "wps": "automation", "\u4ee3\u7801\u5ba1\u8ba1": "security", "\u516c\u4f17\u53f7": "automation", "\u5386\u53f2": "life", "\u5386\u53f2\u5c0f\u8bf4": "life", "\u5730\u7406": "life", "\u5b89\u5168": "security", "\u5b8f": "automation", "\u5bc6\u7801": "security", "\u5c0f\u7a0b\u5e8f": "automation", "\u5cad\u5357": "life", "\u5e7b\u89c9": "ai", "\u601d\u7ef4\u5bfc\u56fe": "misc", "\u6316\u77ff": "misc", "\u6392\u67e5": "ops", "\u6469\u6258\u8f66": "misc", "\u6570\u636e\u5206\u6790": "automation", "\u6570\u636e\u5904\u7406": "automation", "\u65e5\u5fd7\u5206\u6790": "ops", "\u722c\u866b": "automation", "\u751f\u50fb\u5b57": "life", "\u767d\u6761": "life", "\u79e6\u59cb\u7687": "life", "\u7b14\u8bb0": "life", "\u7f16\u7801": "misc", "\u7f51\u7edc\u534f\u8bae": "net", "\u8bfb\u4e66": "life", "\u8bfb\u540e\u611f": "life", "\u8def\u4e9a": "life", "\u8fd0\u7ef4": "ops", "\u9605\u8bfb": "life", "\u968f\u62cd": "life", "\u9a6c\u4f2f\u5eb8": "life", "\u9ed8\u8ba4\u8d26\u53f7": "security"}, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../../javascripts/archive-sidebar.js"></script>
+        <script src="../../javascripts/archive-sidebar.js"></script>
       
-        <script src="../../../../javascripts/tags-index.js"></script>
+        <script src="../../javascripts/tags-index.js"></script>
       
     
   </body>

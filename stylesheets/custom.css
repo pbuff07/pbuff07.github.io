@@ -195,3 +195,8 @@
   font-size: 0.88rem;
   line-height: 1.45;
 }
+
+/* 加宽内容显示区，便于完整展示宽幅图表（如思维导图） */
+.md-grid {
+  max-width: 80rem;
+}
